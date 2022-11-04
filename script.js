@@ -16,3 +16,4 @@ document.addEventListener("keydown", function (event) {
       newElement();
     }
   });
+  how to add text to list after pressing enter js
