@@ -1,19 +1,8 @@
-function newElement()
-{
-    var li = document.createElement('li');
-    var inputValue = document.getElementById("myInput").value;
-    li.appendChild(document.createTextNode(inputValue));
-        if (inputValue === '') {
-        alert("You must write something!");
-      } else {
-        document.getElementById("list").appendChild(li);
-      }
-
-    document.getElementById("myInput").value = "";
-}
-document.addEventListener("keydown", function (event) {
-    if (event.keyCode === 13) {
-      newElement();
-    }
-  });
-  how to add text to list after pressing enter js
+document.querySelector('input').addEventListener('keyup', (event) =>{
+  if (event.key == "Enter") {
+    let newEl = document.createElement('div');
+    newEl.className = 'text';
+    newEl.textContent = event.target.value;
+    event.target.outerHTML = newEl.outerHTML;
+  }
+})
