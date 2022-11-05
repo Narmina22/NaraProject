@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <title>To-Do List</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
     <div class="main">
-        <div class="div1"></div>
-        <div class="heading"><h1 class="heading1">To-Do List</h1></div>
-        <div class="img1"><img src="pic/Group 74.svg" alt="img"></div>
-        <div class="input12">
-            <input class="input1" type="text">
-            <img src="pic/X.svg" alt="x">
+        <!-- Желтая линия -->
+        <div class="yellow-line"></div>
+        <h1>To-Do List</h1>
+        <!-- Кнопка сортировки -->
+        <button class="sort-button">
+            <img src="pic/down-grey.svg" alt="sort">
+        </button>
+        <!-- Контейнер со строками -->
+        <div class="container">
+            <div class="line">
+                <input type="text">
+                <button class="delete"><img class="x" src="pic/X-grey.svg" alt="x"></button>
+            </div>
         </div>
-        <div class="button1"><button><p class="plus">+</p><p class="add">Добавить</p></button></div>
+        <!-- Кнопка добавить -->
+        <button class="add-button">
+            <div class="plus"><p>+</p></div>
+            <p class="add-text">Добавить</p>
+        </button>
     </div>
 </body>
 </html>
