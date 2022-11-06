@@ -16,7 +16,7 @@ let container = document.querySelector('.container');
 addButton.addEventListener('click', (event) => {
   let newLine = document.createElement('div')
   newLine.className = 'line'
-  newLine.innerHTML = '<input type="text">\n<button class="delete"><img class="x" src="pic/X-grey.svg" alt="x"></button>'
+  newLine.innerHTML = '<input type="text">\n<button class="delete"><img class="x" src="pic/X-grey.svg" alt="x"><img class="x-violet" src="pic/X-violet.svg" alt="x"></button>'
   container.append(newLine)
   update()
 })    

@@ -40,7 +40,12 @@ h1 {
 .container {
     border: 1px solid #C4C4C4;
     border-radius: 10px;
+    min-height: 30px;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
+
 .line {
     width: 286px;
     height: 40px;
