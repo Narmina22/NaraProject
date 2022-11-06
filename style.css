@@ -18,7 +18,6 @@ body {
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     width: 336px;
-    /* height: 236px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,6 +26,7 @@ body {
     position: absolute;
     width: 335px;
     height: 28px;
+    margin-top: -0.5px;
     background-color: #FFDC40;
     border-radius: 9px 9px 0px 0px;
 }
@@ -52,17 +52,37 @@ h1 {
 }
 input {
     margin: 0;
-    width: 239px;
+    width: 215px;
     height: 30px;
     border: 0;
     outline: 0;
+    font-size: 15px;
+    margin-left: 15px;
 }
-.text {
-    width: 239px;
-    margin-left: 5px;
+.delete {
+    position: relative;
+    border: 0;
+    background-color: white;
+    width: 20px;
+    max-width: 100%;
 }
-.x {
+.x-grey {
     cursor: pointer;
+}
+.x-violet {
+    cursor: pointer;
+    position: absolute;
+    top: 1px;
+    right: 0;
+    left: 6px;
+    bottom: 0;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity .1s;
+}
+.delete:hover img.x-violet {
+    height: 20px;
+    opacity: 5;
 }
 .add-button {
     display: flex;
@@ -98,13 +118,25 @@ button:hover {
     transform: scale(1.05);
 }
 .sort-button {
+    position: relative;
+    max-width: 100%;
     border: 0;
     background-color: white;
     align-self: flex-end;
-    margin: 0 25px 18px 0;
+    margin: 0 25px 10px 0;
 }
-.delete {
-    border: 0;
-    background-color: white;
-    margin-right: 20px;
+.sort-black {
+    cursor: pointer;
+    position: absolute;
+    top: 1px;
+    right: 0;
+    left: 6px;
+    bottom: 0;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity .1s;
+}
+.sort-button:hover img.sort-black {
+    height: 15px;
+    opacity: 2;
 }

@@ -3,12 +3,6 @@ function update () {
     item.addEventListener('keyup', (event) =>{
       if (event.key == "Enter") {
         event.target.readOnly = true;
-        // let newEl = document.createElement('div');
-        // newEl.className = 'text';
-        // newEl.textContent = event.target.value;
-        // // console.log(event.target.outerHTML)
-        // // console.log(newEl.outerHTML)
-        // event.target.outerHTML = newEl.outerHTML;
       }
     })
   })
