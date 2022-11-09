@@ -124,14 +124,16 @@ button:hover {
     transform: scale(1.05);
 }
 .sort-button {
-    position: relative;
     max-width: 100%;
     border: 0;
     background-color: white;
     align-self: flex-end;
     margin: 0 25px 10px 0;
 }
-.sort-black {
+.sort-button img:hover {
+    -webkit-filter: brightness(0%);
+}
+/* .sort-black {
     cursor: pointer;
     position: absolute;
     top: 1px;
@@ -141,8 +143,15 @@ button:hover {
     object-fit: contain;
     opacity: 0;
     transition: opacity .1s;
-}
-.sort-button:hover img.sort-black {
+} */
+/* .sort-button:hover img.sort-black {
     height: 15px;
     opacity: 2;
+} */
+.reversed {
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
 }
+/* .reversed:hover {
+    -webkit-filter: brightness(0%);
+} */

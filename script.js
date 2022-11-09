@@ -8,17 +8,18 @@ function newInput() {
   newLine.lastElementChild.scrollIntoView({behavior: "smooth"})
   update()
 }
+function spaces(str) { return str.trim().length === 0 }
 
 function update () {
   document.querySelectorAll('input').forEach(item => {
     item.addEventListener('keyup', (event) =>{
-      if (event.key == "Enter") {
+      if ((event.key == "Enter") && !spaces(event.target.value)) {
         event.target.readOnly = true
         event.target.className = 'myInputs'
-        let blankLineCounter = 0
-            document.querySelectorAll('input').forEach(item => {
-                if (item.value == '') blankLineCounter++; })
-            if (!(blankLineCounter > 1)) newInput();
+          let blankLineCounter = 0
+          document.querySelectorAll('input').forEach(item => {
+              if (item.value == '') blankLineCounter++; })
+          if (!(blankLineCounter > 1)) newInput();
       }
     })
   })
@@ -44,10 +45,14 @@ addButton.addEventListener('click', (event) => {
 let drag = document.querySelector('.container');
 new Sortable(drag, {group: { name: 'shared', pull: 'clone'}, animation: 200})
 
+let sorted = false
 function sort() {
   let array = [];
   document.querySelectorAll('.myInputs').forEach(item => array.push(item.value))
-  array.sort();
+  if (sorted == false) { array.sort(); sorted = true;
+  document.querySelector('.sort-button').classList.add('reversed')}
+  else { array.sort().reverse(); sorted = false;
+  document.querySelector('.sort-button').classList.remove('reversed')}
   document.querySelectorAll('.myInputs').forEach((item, index) => item.value = array[index])
   update()
 }
