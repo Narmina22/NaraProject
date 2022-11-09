@@ -5,24 +5,29 @@ function newInput() {
   newLine.className = 'line'
   newLine.innerHTML = '<input type="text">\n<button class="delete"><img class="x" src="pic/X-grey.svg" alt="x"><img class="x-violet" src="pic/X-violet.svg" alt="x"></button>'
   container.append(newLine)
+  newLine.lastElementChild.scrollIntoView({behavior: "smooth"})
+  update()
 }
 
 function update () {
-  document.querySelectorAll('input').forEach(item1 => {
-    item1.addEventListener('keyup', (event) =>{
+  document.querySelectorAll('input').forEach(item => {
+    item.addEventListener('keyup', (event) =>{
       if (event.key == "Enter") {
-        event.target.readOnly = true;
-        newInput();
-        update();
+        event.target.readOnly = true
+        event.target.className = 'myInputs'
+        let blankLineCounter = 0
+            document.querySelectorAll('input').forEach(item => {
+                if (item.value == '') blankLineCounter++; })
+            if (!(blankLineCounter > 1)) newInput();
       }
-      document.querySelectorAll('.line').forEach(item => {
-        document.querySelectorAll('.delete').forEach(item2 => {
-          item2.addEventListener('click', () => {
-            if (item1.readOnly == false) document.querySelector('input').value = '';
-            else if (item1.readOnly == true) item.remove()
-          })
-        })
-      })
+    })
+  })
+  document.querySelectorAll('.delete').forEach(item => {
+    item.addEventListener('click', (event) => {
+      const line = event.target.parentElement.parentElement
+      const input = event.target.parentElement.parentElement.firstElementChild
+      if (input.readOnly == false) input.value = ''
+      else if (input.readOnly == true) line.remove()
     })
   })
 }
@@ -30,23 +35,23 @@ update();
 
 
 let addButton = document.querySelector('.add-button');
-
 addButton.addEventListener('click', (event) => {
   newInput();
   update();
 })    
 
-let remover = document.querySelectorAll('.delete');
-
-// remover.forEach(item => {
-//   item.addEventListener('click', () => {
-//     document.querySelectorAll('input').forEach(item => {
-//       if (item.readOnly == false) document.querySelector('input').value = '';
-//       else if (item.readOnly == true) document.querySelector('.line').remove();
-//     })
-//   })
-// })
-
 
 let drag = document.querySelector('.container');
-new Sortable(drag, {group: { name: 'shared', pull: 'clone'}, animation: 150})
+new Sortable(drag, {group: { name: 'shared', pull: 'clone'}, animation: 200})
+
+function sort() {
+  let array = [];
+  document.querySelectorAll('.myInputs').forEach(item => array.push(item.value))
+  array.sort();
+  document.querySelectorAll('.myInputs').forEach((item, index) => item.value = array[index])
+  update()
+}
+
+document.querySelector('.sort-button').addEventListener('click', (event) => {
+  sort()
+})
