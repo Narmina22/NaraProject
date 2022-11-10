@@ -27,8 +27,10 @@ function update () {
     item.addEventListener('click', (event) => {
       const line = event.target.parentElement.parentElement
       const input = event.target.parentElement.parentElement.firstElementChild
-      if (input.readOnly == false) input.value = ''
-      else if (input.readOnly == true) line.remove()
+      if ((input.readOnly == false) && (input.value == '')) line.remove()
+      else if (input.readOnly == false) input.value = ''
+      else if ((input.readOnly == true)) line.remove()
+
     })
   })
 }
@@ -45,18 +47,17 @@ addButton.addEventListener('click', (event) => {
 let drag = document.querySelector('.container');
 new Sortable(drag, {group: { name: 'shared', pull: 'clone'}, animation: 200})
 
-let sorted = false
-function sort() {
+function sort(sorted) {
   let array = [];
   document.querySelectorAll('.myInputs').forEach(item => array.push(item.value))
-  if (sorted == false) { array.sort(); sorted = true;
-  document.querySelector('.sort-button').classList.add('reversed')}
-  else { array.sort().reverse(); sorted = false;
-  document.querySelector('.sort-button').classList.remove('reversed')}
+  if (sorted == false) { array.sort(); }
+  else { array.sort().reverse(); }
   document.querySelectorAll('.myInputs').forEach((item, index) => item.value = array[index])
   update()
 }
 
 document.querySelector('.sort-button').addEventListener('click', (event) => {
-  sort()
+  if (event.target.src.indexOf("pic/down-grey.svg") != -1)
+  { event.target.src = 'pic/up-grey.svg'; sort(false);}
+  else { event.target.src = 'pic/down-grey.svg'; sort(true)}
 })

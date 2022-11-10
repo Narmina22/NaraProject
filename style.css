@@ -41,8 +41,9 @@ h1 {
 .container {
     border: 1px solid #C4C4C4;
     border-radius: 10px;
-    min-height: 30px;
+    min-height: 40px;
     max-height: 250px;
+    min-width: 286px;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -50,20 +51,18 @@ h1 {
 .line {
     width: 286px;
     height: 40px;
-    margin-top: 9px;
     display: flex;
     flex-direction: row;
     align-items: center;
     border-radius: 10px;
 }
 input {
-    margin: 0;
+    margin: 0 5px 0 15px;
     width: 215px;
     height: 30px;
     border: 0;
     outline: 0;
     font-size: 15px;
-    margin-left: 15px;
 }
 .delete {
     position: relative;
@@ -125,33 +124,19 @@ button:hover {
 }
 .sort-button {
     max-width: 100%;
+    padding: 0;
     border: 0;
     background-color: white;
     align-self: flex-end;
-    margin: 0 25px 10px 0;
+    margin: 0 30px 10px 0;
 }
-.sort-button img:hover {
-    -webkit-filter: brightness(0%);
-}
-/* .sort-black {
-    cursor: pointer;
-    position: absolute;
-    top: 1px;
-    right: 0;
-    left: 6px;
-    bottom: 0;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity .1s;
-} */
-/* .sort-button:hover img.sort-black {
-    height: 15px;
-    opacity: 2;
-} */
 .reversed {
     -webkit-transform: scaleY(-1);
     transform: scaleY(-1);
 }
-/* .reversed:hover {
+.sort-button img:hover {
     -webkit-filter: brightness(0%);
-} */
+}
+.reversed:hover {
+    -webkit-filter: brightness(0%);
+}
