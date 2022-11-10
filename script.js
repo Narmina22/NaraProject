@@ -27,10 +27,11 @@ function update () {
     item.addEventListener('click', (event) => {
       const line = event.target.parentElement.parentElement
       const input = event.target.parentElement.parentElement.firstElementChild
-      if ((input.readOnly == false) && (input.value == '')) line.remove()
+      if (container.childElementCount==1) {input.readOnly = false; input.value = ''; }
+      else if ((input.readOnly == false) && (input.value == '')) line.remove()
       else if (input.readOnly == false) input.value = ''
       else if ((input.readOnly == true)) line.remove()
-
+      
     })
   })
 }
