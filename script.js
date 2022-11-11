@@ -19,29 +19,34 @@ function update () {
           let blankLineCounter = 0
           document.querySelectorAll('input').forEach(item => {
               if (item.value == '') blankLineCounter++; })
-          if (!(blankLineCounter > 1)) newInput();
+          if (!(blankLineCounter >= 1)) newInput();
       }
     })
   })
   document.querySelectorAll('.delete').forEach(item => {
     item.addEventListener('click', (event) => {
+      console.log('test')
       const line = event.target.parentElement.parentElement
       const input = event.target.parentElement.parentElement.firstElementChild
-      if (container.childElementCount==1) {input.readOnly = false; input.value = ''; }
-      else if ((input.readOnly == false) && (input.value == '')) line.remove()
-      else if (input.readOnly == false) input.value = ''
-      else if ((input.readOnly == true)) line.remove()
-      
-    })
-  })
+      if (container.childElementCount==1) {input.value = ''; input.readOnly = false; console.log('1st if')}
+      else if (input.readOnly == false) {
+        if (input.value != '') input.value = '';
+        else if (container.childElementCount!=1) line.remove();
+      }
+      else {line.remove(); console.log('4th if')}
+})})
 }
+console.log('do')
 update();
+console.log('posle')
 
 
 let addButton = document.querySelector('.add-button');
 addButton.addEventListener('click', (event) => {
   newInput();
+  console.log('do 2')
   update();
+  console.log('posle 2')
 })    
 
 
